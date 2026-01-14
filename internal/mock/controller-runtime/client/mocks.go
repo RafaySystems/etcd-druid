@@ -121,6 +121,25 @@ func (mr *MockClientMockRecorder) Get(ctx, key, obj any, opts ...any) *gomock.Ca
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Get", reflect.TypeOf((*MockClient)(nil).Get), varargs...)
 }
 
+// Apply mocks base method.
+func (m *MockClient) Apply(ctx context.Context, obj runtime.ApplyConfiguration, opts ...client.ApplyOption) error {
+	m.ctrl.T.Helper()
+	varargs := []any{ctx, obj}
+	for _, a := range opts {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "Apply", varargs...)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// Apply indicates an expected call of Apply.
+func (mr *MockClientMockRecorder) Apply(ctx, obj any, opts ...any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]any{ctx, obj}, opts...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Apply", reflect.TypeOf((*MockClient)(nil).Apply), varargs...)
+}
+
 // GroupVersionKindFor mocks base method.
 func (m *MockClient) GroupVersionKindFor(obj runtime.Object) (schema.GroupVersionKind, error) {
 	m.ctrl.T.Helper()
@@ -129,6 +148,7 @@ func (m *MockClient) GroupVersionKindFor(obj runtime.Object) (schema.GroupVersio
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
+
 
 // GroupVersionKindFor indicates an expected call of GroupVersionKindFor.
 func (mr *MockClientMockRecorder) GroupVersionKindFor(obj any) *gomock.Call {

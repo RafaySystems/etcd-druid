@@ -301,6 +301,10 @@ func (c *testClient) Update(ctx context.Context, obj client.Object, opts ...clie
 	return c.delegate.Update(ctx, obj, opts...)
 }
 
+func (c *testClient) Apply(ctx context.Context, obj runtime.ApplyConfiguration, opts ...client.ApplyOption) error {
+	return c.delegate.Apply(ctx, obj, opts...)
+}
+
 func (c *testClient) Status() client.SubResourceWriter {
 	return c.delegate.Status()
 }
