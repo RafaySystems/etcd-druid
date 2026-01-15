@@ -153,6 +153,7 @@ func (b *stsBuilder) createStatefulSetSpec(ctx component.OperatorContext) error 
 		}
 		b.sts.Spec.VolumeClaimTemplates = b.getVolumeClaimTemplates()
 	}
+	
 	return nil
 }
 
@@ -179,6 +180,7 @@ func (b *stsBuilder) createPodTemplateSpec(ctx component.OperatorContext) error 
 			TopologySpreadConstraints: b.etcd.Spec.SchedulingConstraints.TopologySpreadConstraints,
 			Volumes:                   podVolumes,
 			PriorityClassName:         ptr.Deref(b.etcd.Spec.PriorityClassName, ""),
+			Tolerations: b.etcd.Spec.Tolerations,
 		},
 	}
 	if druidv1alpha1.IsEtcdRuntimeComponentCreationEnabled(b.etcd.ObjectMeta) {

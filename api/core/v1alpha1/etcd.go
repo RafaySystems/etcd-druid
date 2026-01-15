@@ -350,6 +350,9 @@ type EtcdSpec struct {
 	// run as root. By default, they run as non-root with user 'nobody'.
 	// +optional
 	RunAsRoot *bool `json:"runAsRoot,omitempty"`
+	// Tolerations is a list of tolerations that shall be applied to the etcd pods.
+	// +optional
+	Tolerations []corev1.Toleration `json:"tolerations,omitempty"`
 }
 
 // CrossVersionObjectReference contains enough information to let you identify the referred resource.
